@@ -3,9 +3,9 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import About from "./components/About";
+import About from "./components/About";
 import React, { useState } from "react";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   let toggleMode = () => {
@@ -43,15 +43,15 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar title="TextUtils2" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} setalert={setalert} />
         <div className="container my-5">
-          {/* <Switch> */}
-            {/* <Route exact path="/about"> */}
-              {/* <About /> */}
-            {/* </Route> */}
-            {/* <Route exact path="/"> */}
+          <Switch>
+            <Route exact path="/about">
+              <About mode= {mode}/>
+            </Route>
+            <Route exact path="/">
               <TextForm
                 heading="Enter The Text To Analyze"
                 mode={mode}
@@ -59,10 +59,10 @@ function App() {
                 alert={alert}
                 showAlert={showAlert}
               />
-            {/* </Route> */}
-          {/* </Switch> */}
+            </Route>
+          </Switch>
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }

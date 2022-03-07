@@ -1,36 +1,43 @@
 import React,{useState} from "react";
 
 
-export default function About() {
+export default function About(props) {
 
-  const [myStyle, setmyStyle] = useState({
-    color:'black',
-    backgroundColor: 'white'
-  })
+  // const [myStyle, setmyStyle] = useState({
+  //   color:'black',
+  //   backgroundColor: 'white'
+  // })
 
   const [btntext, setbtntext] = useState("Enable Dark Mode");
 
-  const toggleButton = () =>{
-    if (myStyle.backgroundColor == 'white'){
-      setmyStyle({color : 'white' ,
-      backgroundColor:'black',
-        })
-        
-    }
-    else{
-      setmyStyle({color : 'black' ,
-      backgroundColor:'white',
-     })
+  // const toggleButton = () =>{
+  //   if (myStyle.backgroundColor == 'white'){
+  //     setmyStyle({color : 'white' ,
+  //     backgroundColor:'black',
+  //       })
+
+  //   }
+  //   else{
+  //     setmyStyle({color : 'black' ,
+  //     backgroundColor:'white',
+  //    })
      
-     setbtntext("Enable Dark Mode")
-    }
+  //    setbtntext("Enable Dark Mode")
+  //   }
 
      
+
+  // }
+
+
+  let myStyle = {
+    backgroundColor: props.mode === 'light'? 'white':'#212529',
+    color: props.mode === 'light'? '#212529':'white',
 
   }
   return (
     <>
-      <div className="container d-flex flex-column vw-100 p-5" style={myStyle}>
+      <div className={`container d-flex flex-column vw-100 p-5`} style={myStyle}>
         <h1 className="hadow-sm p-3 my-2" style={myStyle}>About Us</h1>
         <div className="accordion mt-5 border border-light" id="accordionExample">
           <div className="accordion-item border border-light" style={myStyle}>
@@ -130,14 +137,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="container">
-          <button
-            type="button"
-            className="btn btn-primary mt-5 w-25 py-2" onClick={toggleButton}
-          >
-            {btntext}
-          </button>
-        </div>
+       
       </div>
     </>
   );
